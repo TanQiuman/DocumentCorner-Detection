@@ -1,0 +1,12 @@
+单个尺度
+python tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE D:\MyData\PythonProject\Higherhrnet-paper\output\coco_kpt\pose_higher_hrnet\w32_512_adam_lr1e-3\model_best.pth.tar
+python tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE D:\MyData\PythonProject\Higherhrnet-paper\output\coco_kpt\pose_higher_hrnet\w32_512_adam_lr1e-3-20epoch\model_best.pth.tar
+多个尺度
+python tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE models/pytorch/pose_coco/pose_higher_hrnet_w32_512.pth TEST.SCALE_FACTOR '[0.5, 1.0, 2.0]'
+python tools/dist_train.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml
+python tools/dist_train.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml FP16.ENABLED True FP16.DYNAMIC_LOSS_SCALE True
+默认情况下，我们使用水平翻转。要在不翻转的情况下进行测试：
+python tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE models/pytorch/pose_coco/model_best.pth.tar TEST.FLIP_TEST False
+多尺度测试
+
+python tools/valid.py --cfg experiments/coco/higher_hrnet/w32_512_adam_lr1e-3.yaml TEST.MODEL_FILE models/pytorch/pose_coco/model_best.pth.tar TEST.SCALE_FACTOR '[0.5, 1.0, 2.0]'
